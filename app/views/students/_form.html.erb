@@ -1,0 +1,47 @@
+<%= form_with(model: student, remote: true, format: :json, id: 'add_student') do |form| %>
+  <% if student.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(student.errors.count, "error") %> prohibited this student from being saved:</h2>
+
+      <ul>
+      <% student.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, id: :student_name, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :corporation %>
+    <%= form.select :corporation, [['Lunes', 'Lunes'], ['Martes', 'Martes',], ['Miércoles', 'Miércoles'], ['Jueves', 'Jueves'], ['Viernes', 'Viernes']], {}, { class: "form-control", id: "student_corporation" } %>    
+  </div>
+
+  <div class="field">
+    <%= form.label :session %>
+    <%= form.text_field :session, id: :student_session, class: "form-control" %>    
+  </div>
+
+  <div class="field">
+    <%= form.label :transport %>
+    <%= form.text_field :transport, id: :student_transport, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :date %>
+    <%= form.datetime_select :date, id: :student_date, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :check %>
+    <%= form.text_field :check, id: :student_check, class: "form-control" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Create Student', class: "btn btn-success" %>
+  </div>
+<% end %>
